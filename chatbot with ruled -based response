@@ -1,0 +1,24 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+# Define a list of predefined rules for the chatbot
+rules = [
+    (r'hi|hello|hey', ['Hello!', 'Hi there!', 'Hey!']),
+    (r'how are you', ['I am just a chatbot.', 'I am doing fine, thanks!']),
+    (r'what is your name', ['I am a chatbot.', 'I do not have a name.']),
+    (r'who are you', ['I am a chatbot created by OpenAI.', 'I am your friendly chatbot.']),
+    (r'quit', ['Goodbye!', 'Bye!', 'Take care!']),
+]
+
+# Create a chatbot instance
+chatbot = Chat(rules, reflections)
+
+# Start the chat loop
+print("Hello! I'm your chatbot. Type 'quit' to exit.")
+while True:
+    user_input = input("You: ")
+    response = chatbot.respond(user_input)
+    print("Bot:", response)
+
+    if user_input.lower() == 'quit':
+        break
